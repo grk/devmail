@@ -13,6 +13,9 @@ module Devmail
       dm.html_part = message.html_part
       dm.body = message.decoded
       dm.multipart = message.multipart?
+
+      dm.mail = message
+
       dm.save
 
       message
