@@ -1,0 +1,10 @@
+<h1>Development email</h1>
+
+<p>From: <%= @mail.from.join(", ") %></p>
+<p>To: <%= @mail.to.join(", ") %></p>
+<p>Subject: <%= @mail.subject %></p>
+<p>Body: <br/>
+  <%= @mail.body.gsub(/\n/, "<br />").html_safe if @mail.body.present? %>
+</p>
+
+<%= link_to "Back to list", development_mails_path %>

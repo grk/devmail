@@ -1,0 +1,20 @@
+<h1>Development e-mails captured:</h1>
+
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Subject</th>
+    <th>Delivery time</th>
+    <th></th>
+  </tr>
+  <% for mail in @mails do -%>
+    <tr>
+      <td><%= mail.from.join(", ") %></td>
+      <td><%= mail.to.join(", ") %></td>
+      <td><%= mail.subject %></td>
+      <td><%= l(Time.zone.utc_to_local(mail.created_at)) %></td>
+      <td><%= link_to "Details", development_mail_path(mail) %></td>
+    </tr>
+  <% end -%>
+</table>
