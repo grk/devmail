@@ -1,3 +1,3 @@
-Rails.application.routes.draw do |map|
+Rails.application.routes.draw do
   resources :development_mails, :controller => 'devmail/development_mails', :only => [:index, :show]
 end
