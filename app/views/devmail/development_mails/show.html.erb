@@ -1,10 +1,21 @@
 <h1>Development email</h1>
 
-<p>From: <%= @mail.from.join(", ") %></p>
-<p>To: <%= @mail.to.join(", ") %></p>
-<p>Subject: <%= @mail.subject %></p>
-<p>Body: <br/>
-  <%= @mail.body.gsub(/\n/, "<br />").html_safe if @mail.body.present? %>
-</p>
+<p><b>Sent at:</b> <%= @mail.created_at.in_time_zone %></p>
+<p><b>From:</b> <%= @mail.from.join(", ") %></p>
+<p><b>To:</b> <%= @mail.to.join(", ") %></p>
+<p><b>Subject:</b> <%= @mail.subject %></p>
+<% if @mail.multipart? -%>
+  <p><b>Text part:</b><br />
+    <%= @mail.text_part.gsub(/\n/, "<br />").html_safe %>
+  </p>
+  <p>
+    <b><%= link_to "HTML part", html_part_development_mail(@mail) %></b>
+  </p>
+<% else -%>
+  <p><b>Body:</b><br />
+    <%= @mail.text_part.gsub(/\n/, "<br />").html_safe %>
+  </p>
+<% end -%>
 
 <%= link_to "Back to list", development_mails_path %>
+<%= link_to 'Delete', development_mail_path(@mail), :confirm => 'Are you sure?', :method => :delete %>

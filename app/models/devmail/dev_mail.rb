@@ -13,7 +13,6 @@ module Devmail
     field :reply_to, :type => Array
     field :text_part
     field :html_part
-    field :body
     field :multipart, :type => Boolean
     field :content_transfer_encoding
 

@@ -2,19 +2,24 @@
 
 <table>
   <tr>
+    <th>Sent at</th>
     <th>From</th>
     <th>To</th>
     <th>Subject</th>
-    <th>Delivery time</th>
     <th></th>
   </tr>
   <% for mail in @mails do -%>
     <tr>
+      <td><%= mail.created_at.in_time_zone %></td>
       <td><%= mail.from.join(", ") %></td>
       <td><%= mail.to.join(", ") %></td>
       <td><%= mail.subject %></td>
-      <td><%= l(Time.zone.utc_to_local(mail.created_at)) %></td>
-      <td><%= link_to "Details", development_mail_path(mail) %></td>
+      <td><%= link_to "Details", development_mail_path(mail) %>, 
+        <%= link_to "Delete", development_mail_path(mail), :confirm => 'Are you sure?', :method => :delete %>
+      </td>
     </tr>
   <% end -%>
 </table>
+
+<%= link_to "Clear", clear_development_mails_path,
+  :confirm => "Are you sure? This will remove all stored emails." %>
