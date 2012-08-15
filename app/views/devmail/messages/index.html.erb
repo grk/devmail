@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="span12">
+    <h1>Messages</h1>
+    <ol>
+    <% @messages.each_with_index do |message, index| %>
+      <li><%= link_to message.summary, message_path(index) %></li>
+    <% end %>
+    </ol>
+    <p><%= @messages.inspect %></p>
+  </div>
+</div>

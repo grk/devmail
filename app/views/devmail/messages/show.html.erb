@@ -1,0 +1,60 @@
+<table class="table table-condensed">
+  <tr>
+    <th>To</th>
+    <td><%= @message.to.join(", ") %></td>
+  </tr>
+
+  <tr>
+    <th>CC</th>
+    <td><%= @message.cc.join(", ") %></td>
+  </tr>
+
+  <tr>
+    <th>BCC</th>
+    <td><%= @message.bcc.join(", ") %></td>
+  </tr>
+
+  <tr>
+    <th>From</th>
+    <td><%= @message.from.join(", ") %></td>
+  </tr>
+
+  <tr>
+    <th>Reply to</th>
+    <td><%= @message.reply_to %></td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><%= @message.subject %></td>
+  </tr>
+
+<!--   <tr>
+    <th></th>
+    <td><%= %></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <td><%= %></td>
+  </tr>
+ -->
+</table>
+
+<ul class="nav nav-tabs" id="format-select">
+  <li class="active"><a href="#text" data-toggle="tab">Text</a></li>
+  <% if @message.multipart %>
+    <li><a href="#html" data-toggle="tab">HTML</a></li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="text">
+    <pre><%= @message.text_part %></pre>
+  </div>
+  <% if @message.multipart %>
+  <div class="tab-pane html-part-container" id="html">
+    <iframe src="<%= html_part_message_path(params[:id]) %>">
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devmail</title>
+  <%= stylesheet_link_tag    "devmail/application", :media => "all" %>
+  <%= javascript_include_tag "devmail/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li class="<%= 'active' if action = 'index' %>">
+        <%= link_to "Messages", messages_path %>
+      </li>
+
+      <li>
+        <%= link_to "Send test message", send_test_messages_path %>
+      </li>
+    </ul>
+
+    <%= yield %>
+  </div>
+</body>
+</html>

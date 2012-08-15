@@ -1,0 +1,12 @@
+/*
+*= require 'bootstrap'
+*/
+
+html, body { height: 100%; min-height: 100% }
+
+div#html iframe {
+  border: 1px solid #eee;
+  display: block;
+  width: 99%;
+  height: 300px;
+}
